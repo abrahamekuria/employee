@@ -47,14 +47,14 @@ public class EmployeeController {
     }
 
     @PostMapping("/saveEmployeeData")
-    public EmpInfo SaveEmpInfo() {
+    public String SaveEmpInfo() {
         EmpInfo empInfo = new EmpInfo();
         EmployeeResponse empInfoService = employeeService.getEmpInfoService();
         List<EmpInfo> empInfoList = empInfoService.getData();
         for (EmpInfo e : empInfoList) {
             infoRepository.save(e);
         }
-        return empInfo;
+        return "Saved into MySql Successfully";
     }
     @PostMapping ("/addAnEmployee")
     public String PostEmpInfo(@RequestBody EmpInfo newEmp){
